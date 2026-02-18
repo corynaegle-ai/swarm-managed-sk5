@@ -1,0 +1,30 @@
+.player-setup {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.player-setup h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.player-input-group {
+  margin-bottom: 15px;
+}
+
+.player-name-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.player-name-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

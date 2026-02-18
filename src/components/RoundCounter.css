@@ -1,0 +1,91 @@
+.round-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  margin: 16px 0;
+}
+
+.round-info {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.round-number {
+  color: #ffffff;
+}
+
+.phase-separator {
+  color: #cccccc;
+  margin: 0 8px;
+}
+
+.phase-indicator {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  animation: phaseTransition 0.5s ease-in-out;
+}
+
+.phase-bidding {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.phase-playing {
+  background-color: #10b981;
+  color: white;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.phase-scoring {
+  background-color: #f59e0b;
+  color: white;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+@keyframes phaseTransition {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.phase-indicator:hover {
+  transform: scale(1.05);
+}
+
+/* Pulse animation for phase transitions */
+.phase-indicator.transitioning {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}

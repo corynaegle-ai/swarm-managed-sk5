@@ -1,0 +1,208 @@
+.bid-collection {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bid-collection--success {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.bid-collection__success-message h3 {
+  color: #22c55e;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.bid-collection__success-message p {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.bid-collection__header {
+  margin-bottom: 32px;
+}
+
+.bid-collection__header h2 {
+  color: #1f2937;
+  margin-bottom: 16px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.bid-collection__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bid-collection__progress-text {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.bid-collection__progress-bar {
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bid-collection__progress-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.bid-collection__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bid-collection__players {
+  display: grid;
+  gap: 16px;
+}
+
+.bid-collection__player {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.bid-collection__player--incomplete {
+  border-color: #fbbf24;
+  background-color: #fef3c7;
+}
+
+.bid-collection__player--complete {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+.bid-collection__player--error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.bid-collection__label {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.bid-collection__input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.bid-collection__input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.bid-collection__input:disabled {
+  background-color: #f9fafb;
+  cursor: not-allowed;
+}
+
+.bid-collection__error {
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bid-collection__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.bid-collection__submit {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.bid-collection__submit--ready {
+  background-color: #22c55e;
+  color: white;
+}
+
+.bid-collection__submit--ready:hover:not(:disabled) {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.bid-collection__submit--incomplete {
+  background-color: #6b7280;
+  color: white;
+  cursor: not-allowed;
+}
+
+.bid-collection__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.bid-collection__incomplete-message {
+  color: #f59e0b;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bid-collection {
+    padding: 16px;
+    margin: 0 16px;
+  }
+  
+  .bid-collection__header h2 {
+    font-size: 24px;
+  }
+  
+  .bid-collection__submit {
+    min-width: 100%;
+  }
+}
+
+/* Animation for form submission */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bid-collection--success {
+  animation: fadeIn 0.5s ease;
+}

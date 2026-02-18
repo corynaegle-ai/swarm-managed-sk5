@@ -1,0 +1,119 @@
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.game-header h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.start-btn, .reset-btn, .submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.start-btn:hover, .reset-btn:hover, .submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.submit-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.game-over {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.game-over h2 {
+  color: #155724;
+  margin-top: 0;
+}
+
+.game-content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.game-main {
+  flex: 2;
+}
+
+.game-sidebar {
+  flex: 1;
+  min-width: 300px;
+}
+
+.round-section {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.round-section h2 {
+  color: #495057;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.score-inputs {
+  margin-bottom: 20px;
+}
+
+.player-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.player-input label {
+  min-width: 100px;
+  font-weight: bold;
+  color: #495057;
+}
+
+.player-input input {
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 120px;
+}
+
+.player-input input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+@media (max-width: 768px) {
+  .game-content {
+    flex-direction: column;
+  }
+  
+  .game-sidebar {
+    min-width: auto;
+    width: 100%;
+  }
+}
