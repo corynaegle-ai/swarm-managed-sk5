@@ -100,6 +100,26 @@ export function useGameState() {
     );
   };
 
+  // Check if all score entry is complete (tricks and bonus points)
+  const allScoreEntryComplete = () => {
+    if (!state.players.length) return false;
+    return state.players.every(player => 
+      state.actualTricks.hasOwnProperty(player.id) &&
+      state.bonusPoints.hasOwnProperty(player.id)
+    );
+  };
+
+  // Auto-transition to next phase based on completion status
+  const checkPhaseTransition = () => {
+    if (state.currentPhase === GAME_PHASES.BIDDING && allBidsSubmitted()) {
+      startPlaying();
+    } else if (state.currentPhase === GAME_PHASES.PLAYING) {
+      // Manual transition to score entry required
+    } else if (state.currentPhase === GAME_PHASES.SCORE_ENTRY && allScoreEntryComplete()) {
+      completeRound();
+    }
+  };
+
   // Check if current phase is score entry
   const isScoreEntryPhase = () => {
     return state.currentPhase === GAME_PHASES.SCORE_ENTRY;
@@ -164,6 +184,8 @@ export function useGameState() {
     // Utility functions
     allBidsSubmitted,
     allTricksRecorded,
+    allScoreEntryComplete,
+    checkPhaseTransition,
     isScoreEntryPhase,
     isPlayingPhase,
     isBiddingPhase,

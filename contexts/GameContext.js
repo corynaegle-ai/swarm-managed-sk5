@@ -21,7 +21,8 @@ const initialState = {
   scores: {},
   totalScores: {},
   roundComplete: false,
-  gameComplete: false
+  gameComplete: false,
+  scoreEntryComplete: false
 };
 
 // Action types
@@ -80,7 +81,8 @@ function gameReducer(state, action) {
       return {
         ...state,
         currentPhase: action.payload,
-        roundComplete: action.payload === GAME_PHASES.ROUND_COMPLETE
+        roundComplete: action.payload === GAME_PHASES.ROUND_COMPLETE,
+        scoreEntryComplete: action.payload === GAME_PHASES.ROUND_COMPLETE
       };
 
     case ACTIONS.COMPLETE_ROUND:
@@ -125,7 +127,8 @@ function gameReducer(state, action) {
         bids: {},
         actualTricks: {},
         bonusPoints: {},
-        roundComplete: false
+        roundComplete: false,
+        scoreEntryComplete: false
       };
 
     case ACTIONS.RESET_GAME:
@@ -135,7 +138,8 @@ function gameReducer(state, action) {
         totalScores: state.players.reduce((acc, player) => {
           acc[player.id] = 0;
           return acc;
-        }, {})
+        }, {}),
+        scoreEntryComplete: false
       };
 
     default:
