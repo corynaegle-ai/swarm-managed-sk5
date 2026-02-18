@@ -25,6 +25,7 @@
   border-radius: 4px;
   font-size: 16px;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .player-name-input:focus {
