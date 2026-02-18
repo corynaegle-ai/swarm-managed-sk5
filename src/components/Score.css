@@ -1,0 +1,134 @@
+/* Mobile-first responsive design */
+.score-container {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.score-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+  min-width: 400px; /* Prevent cramping on small screens */
+}
+
+.score-table th,
+.score-table td {
+  padding: 8px 12px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  min-width: 60px; /* Minimum column width */
+}
+
+.score-table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.score-table td {
+  color: #555;
+}
+
+.even-row {
+  background-color: #fafafa;
+}
+
+.odd-row {
+  background-color: white;
+}
+
+.over-par {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.under-par {
+  color: #388e3c;
+  font-weight: 600;
+}
+
+.at-par {
+  color: #666;
+}
+
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .score-container {
+    padding: 0.5rem;
+  }
+  
+  .score-table {
+    font-size: 12px;
+  }
+  
+  .score-table th,
+  .score-table td {
+    padding: 6px 8px;
+    min-width: 50px;
+  }
+  
+  .score-table th {
+    font-size: 10px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .score-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .score-table {
+    font-size: 16px;
+  }
+  
+  .score-table th,
+  .score-table td {
+    padding: 12px 16px;
+  }
+  
+  .score-table tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .score-table-wrapper {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1200px) {
+  .score-container {
+    max-width: 1000px;
+  }
+  
+  .score-table th,
+  .score-table td {
+    padding: 16px 20px;
+  }
+}
