@@ -77,9 +77,20 @@ describe('useGameFlow', () => {
   test('marks game complete after round 10', async () => {
     const { result } = renderHook(() => useGameFlow());
     
-    // Simulate 10 full rounds (each round = 9 seconds for 3 phases)
+    // Simulate 9 full rounds to reach round 10 (each round = 9 seconds for 3 phases)
+    // After 9 rounds (81 seconds), we'll be at round 10, bidding phase
     act(() => {
-      jest.advanceTimersByTime(10 * 9000);
+      jest.advanceTimersByTime(9 * 9000);
+    });
+    
+    await waitFor(() => {
+      expect(result.current.currentRound).toBe(10);
+      expect(result.current.currentPhase).toBe('bidding');
+    });
+    
+    // Complete round 10 (9 more seconds) to trigger game completion
+    act(() => {
+      jest.advanceTimersByTime(9000);
     });
     
     await waitFor(() => {
