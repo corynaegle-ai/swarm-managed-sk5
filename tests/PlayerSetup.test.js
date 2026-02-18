@@ -9,45 +9,54 @@ describe('PlayerSetup Component', () => {
     expect(screen.getByLabelText('Player 2 Name:')).toBeInTheDocument();
   });
 
-  test('shows invalid styling and error message for empty inputs', () => {
+  test('does not show validation styling on initial render', () => {
     render(<PlayerSetup />);
     const input1 = screen.getByLabelText('Player 1 Name:');
-    expect(input1).toHaveClass('invalid');
+    const input2 = screen.getByLabelText('Player 2 Name:');
+    
+    expect(input1).not.toHaveClass('valid');
+    expect(input1).not.toHaveClass('invalid');
+    expect(input2).not.toHaveClass('valid');
+    expect(input2).not.toHaveClass('invalid');
+  });
+
+  test('shows invalid styling and error message after typing empty value', () => {
+    render(<PlayerSetup />);
+    const input = screen.getByLabelText('Player 1 Name:');
+    
+    fireEvent.change(input, { target: { value: '' } });
+    
+    expect(input).toHaveClass('invalid');
     expect(screen.getByText('Player name is required')).toBeInTheDocument();
   });
 
-  test('shows valid styling when name is entered', () => {
+  test('shows valid styling for non-empty name', () => {
     render(<PlayerSetup />);
-    const input1 = screen.getByLabelText('Player 1 Name:');
+    const input = screen.getByLabelText('Player 1 Name:');
     
-    fireEvent.change(input1, { target: { value: 'John' } });
+    fireEvent.change(input, { target: { value: 'John' } });
     
-    expect(input1).toHaveClass('valid');
-    expect(input1).not.toHaveClass('invalid');
-  });
-
-  test('hides error message when valid name is entered', () => {
-    render(<PlayerSetup />);
-    const input1 = screen.getByLabelText('Player 1 Name:');
-    
-    fireEvent.change(input1, { target: { value: 'John' } });
-    
+    expect(input).toHaveClass('valid');
     expect(screen.queryByText('Player name is required')).not.toBeInTheDocument();
   });
 
-  test('validates in real-time as user types', () => {
+  test('validates against trimmed value - whitespace only is invalid', () => {
     render(<PlayerSetup />);
-    const input1 = screen.getByLabelText('Player 1 Name:');
+    const input = screen.getByLabelText('Player 1 Name:');
     
-    // Start with invalid
-    expect(input1).toHaveClass('invalid');
+    fireEvent.change(input, { target: { value: '   ' } });
     
-    // Type a character
-    fireEvent.change(input1, { target: { value: 'J' } });
-    expect(input1).toHaveClass('valid');
+    expect(input).toHaveClass('invalid');
+    expect(screen.getByText('Player name is required')).toBeInTheDocument();
+  });
+
+  test('shows validation after blur event', () => {
+    render(<PlayerSetup />);
+    const input = screen.getByLabelText('Player 1 Name:');
     
-    // Clear input
-    fireEvent.change(input1, { target: { value: '' } });
-    expect(input1).toHaveClass('invalid');
+    fireEvent.blur(input);
+    
+    expect(input).toHaveClass('invalid');
+    expect(screen.getByText('Player name is required')).toBeInTheDocument();
   });
 });

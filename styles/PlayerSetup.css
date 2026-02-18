@@ -1,7 +1,7 @@
 .player-setup {
-  padding: 20px;
   max-width: 400px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .player-input-container {
@@ -11,30 +11,30 @@
 .player-input {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 4px;
+  font-size: 16px;
   transition: border-color 0.3s ease;
-}
-
-.player-input.invalid {
-  border-color: #ff4444;
-}
-
-.player-input.valid {
-  border-color: #44ff44;
 }
 
 .player-input:focus {
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-color: #007bff;
+}
+
+.player-input.valid {
+  border-color: #28a745;
+}
+
+.player-input.invalid {
+  border-color: #dc3545;
 }
 
 .error-message {
-  color: #ff4444;
+  color: #dc3545;
   font-size: 14px;
   margin-top: 5px;
-  font-weight: 500;
+  margin-bottom: 0;
 }
 
 label {
